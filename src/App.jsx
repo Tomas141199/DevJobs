@@ -6,6 +6,7 @@ import Registro from "./pages/auth/Registro";
 import NuevoVacante from "./pages/admin/NuevaVacante";
 import PanelVacantes from "./pages/admin/Panel";
 import Vacantes from "./pages/Vacantes";
+import VistaVacante from "./pages/view/Vacante";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="registro" element={<Registro />} />
-          <Route path="/admin/" element={<PanelVacantes />} />
-          <Route path="/admin/crear-publicacion" element={<NuevoVacante />} />
-          <Route path="/vacantes" element={<Vacantes />} />
+          <Route path="admin/" element={<PanelVacantes />} />
+          <Route path="admin/crear-publicacion" element={<NuevoVacante />} />
+          <Route path="vacantes" element={<Vacantes />} />
+          <Route path="vacante/:id" element={<VistaVacante />} />
         </Route>
       </Routes>
     </BrowserRouter>

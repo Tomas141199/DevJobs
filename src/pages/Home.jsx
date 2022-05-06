@@ -19,7 +19,7 @@ const Home = () => {
             <img
               src={wavy}
               alt="wavy"
-              className="hidden sm:block absolute w-12 bottom-1 left-2"
+              className="hidden md:block absolute w-12 bottom-1 left-2"
             />
             Conoce todas las
             <span className="text-primary-jade ml-2">vacantes</span>
