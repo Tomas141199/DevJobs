@@ -33,7 +33,7 @@ export const MapContainer = ({
   return (
     <div
       id="googleMaps"
-      className="relative h-72 mb-8 w-11/12 mx-auto sm:w-full overflow-y-hidden"
+      className="relative h-72 mb-1 w-11/12 mx-auto sm:w-full overflow-y-hidden"
     >
       <PlacesAutocomplete
         value={address}
@@ -44,7 +44,7 @@ export const MapContainer = ({
           <div>
             <input
               {...getInputProps({
-                placeholder: "Search Places ...",
+                placeholder: "Buscar lugar",
               })}
               className="border-b-4 border-primary-jade w-full p-1 px-2 outline-none rounded-sm mb-4"
             />

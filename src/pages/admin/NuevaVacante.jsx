@@ -5,12 +5,13 @@ import {
   publicacionValues,
 } from "./../../validation/publicacion";
 import FieldWithLabel from "./../../components/form/FieldWithLabel";
-import Field from "./../../components/form/Field";
 import Select from "./../../components/form/Select";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import GoogleMap from "../../components/maps/GoogleMap";
-
+import TextField from "../../components/form/TrixEditor";
+import NavAdmin from "../../components/ui/NavAdmin";
+import Fade from "react-reveal/Fade";
 const fileTypes = ["JPG", "JPEG", "PNG", "GIF"];
 const skills = [
   "HTML5",
@@ -75,71 +76,80 @@ const NuevoVacante = () => {
       // Agregar al set de habilidades
       habilidades.add(e.target.textContent);
     }
-    console.log(habilidades);
     const stringHabilidades = Array.from(habilidades).join(",");
-    // console.log(stringHabilidades);
     setSkillList(stringHabilidades);
-    console.log(stringHabilidades);
   };
   return (
-    <div className="container bg-light-gray py-4 px-1 mx-auto mt-10">
-      <h1 className="text-center text-blue-deep font-semibold text-2xl">
-        Nueva <span className="text-primary-jade">Vacante</span>
-      </h1>
-      <Formik
-        initialValues={publicacionValues}
-        validationSchema={publicacionSchema}
-      >
-        <Form className="mt-8 w-full sm:w-11/12 mx-auto">
-          <FieldWithLabel
-            name="titulo"
-            type="text"
-            placeholder="Titulo de la vacante"
-            label="Titulo"
-          />
-          <Select values={valuesAux} name="categoria" label="Categoria" />
-          <Select values={valuesAux} name="experiencia" label="Experiencia" />
-          <Select values={valuesAux} name="salario" label="Salario" />
+    <>
+      <NavAdmin />
+      <Fade big>
+        <div className="w-10/12 container bg-gray-300 py-4 px-1 mx-auto mt-10">
+          <h1 className="text-center text-blue-deep font-semibold text-2xl">
+            Nueva <span className="text-primary-jade">Vacante</span>
+          </h1>
+          <Formik
+            initialValues={publicacionValues}
+            validationSchema={publicacionSchema}
+          >
+            <Form className="mt-8 w-full sm:w-11/12 mx-auto">
+              <FieldWithLabel
+                name="titulo"
+                type="text"
+                placeholder="Titulo de la vacante"
+                label="Titulo"
+              />
+              <Select values={valuesAux} name="categoria" label="Categoria" />
+              <Select
+                values={valuesAux}
+                name="experiencia"
+                label="Experiencia"
+              />
+              <Select values={valuesAux} name="salario" label="Salario" />
 
-          <div className="mb-8 h-10">
-            <label className="text-xs">Imagen vacante</label>
-            <FileUploader
-              multiple={false}
-              handleChange={handleChange}
-              maxSize={10}
-              name="file"
-              types={fileTypes}
-            />
-          </div>
+              <div className="mb-8 h-10">
+                <label className="text-xs">Imagen vacante</label>
+                <FileUploader
+                  multiple={false}
+                  handleChange={handleChange}
+                  maxSize={10}
+                  name="file"
+                  types={fileTypes}
+                />
+              </div>
 
-          <div>
-            <label className="text-xs">Habilidades requeridas</label>
-            <ul className="flex flex-wrap">
-              {skills.map((skill) => (
-                <li
-                  onClick={activar}
-                  className="duration-300  text-sm border border-gray-500 px-10 py-1 rounded-sm mb-3 mr-4 cursor-pointer"
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
+              <div>
+                <label className="text-xs">Habilidades requeridas</label>
+                <ul className="flex flex-wrap">
+                  {skills.map((skill, index) => (
+                    <li
+                      key={index}
+                      onClick={activar}
+                      className="duration-300  text-sm border border-gray-500 px-10 py-1 rounded-sm mb-3 mr-4 cursor-pointer"
+                    >
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <label className="text-xs mt-3">Ubicacion</label>
-          {/* Mapa */}
-          <GoogleMap
-            address={address}
-            setAddress={setAddress}
-            mapCenter={mapCenter}
-            setMapCenter={setMapCenter}
-          />
+              <TextField />
 
-          {/* Submit para enviar formulario */}
-          <Button value="Crear cuenta" color="bg-primary-red" />
-        </Form>
-      </Formik>
-    </div>
+              <label className="text-xs mt-3">Ubicacion</label>
+              {/* Mapa */}
+              <GoogleMap
+                address={address}
+                setAddress={setAddress}
+                mapCenter={mapCenter}
+                setMapCenter={setMapCenter}
+              />
+
+              {/* Submit para enviar formulario */}
+              <Button value="Crear cuenta" color="bg-primary-jade" />
+            </Form>
+          </Formik>
+        </div>
+      </Fade>
+    </>
   );
 };
 

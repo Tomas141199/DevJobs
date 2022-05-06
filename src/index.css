@@ -211,3 +211,22 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+/* Vacante Hover Effect*/
+.vacante-hover {
+  @apply after:content-['']
+  after:absolute
+  after:w-full
+  after:h-full
+  after:bg-[#16ffb1af] 
+  after:top-0 
+  after:left-0
+  after:scale-x-0
+  after:duration-300
+  after:hover:scale-x-100
+  after:origin-right;
+}
+
+.vacante-hover:hover .eye-link {
+  @apply scale-100 rotate-180;
+}

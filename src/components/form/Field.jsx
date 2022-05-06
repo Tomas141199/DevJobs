@@ -4,7 +4,7 @@ import ErrorMessage from "./ErrorMessage";
 const Field = (props) => {
   const [field, meta] = useField(props);
   return (
-    <div className="mb-12 h-10">
+    <div className="mb-4 h-10">
       <input
         type={props.type}
         className="border-b-4 border-primary-red w-full p-1 px-2 outline-none rounded-sm"

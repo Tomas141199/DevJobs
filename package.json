@@ -17,6 +17,7 @@
     "react-places-autocomplete": "^7.3.0",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.3.0",
+    "react-trix": "^0.10.0",
     "swiper": "^8.1.4",
     "yup": "^0.32.11"
   },
