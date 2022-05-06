@@ -1,4 +1,5 @@
 import logo from "../../assets/logo.svg";
+import logoWhite from "../../assets/logo-white.svg";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
@@ -12,7 +13,7 @@ const Header = () => {
       } px-1 py-4 flex justify-around items-center bg`}
     >
       <Link to="/" className="cursor-pointer duration-300 hover:scale-105">
-        <img src={logo} className="w-24" />
+        <img src={pathActual === "/" ? logo : logoWhite} className="w-24" />
       </Link>
       <nav className="hidden md:flex justify-between items-center gap-3 text-sm">
         <Link
@@ -24,7 +25,7 @@ const Header = () => {
         <Link to="/login" className="relative text-white link-after">
           Acceder
         </Link>
-        <Link to="/login" className="relative text-white link-after">
+        <Link to="/registro" className="relative text-white link-after">
           Registro
         </Link>
       </nav>

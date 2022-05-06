@@ -18,6 +18,10 @@ module.exports = {
       },
       spacing: {
         hero: "32rem",
+        tiny: "0.1rem",
+        13: "3.3rem",
+        128: "31rem",
+        140: "40rem",
       },
     },
   },
