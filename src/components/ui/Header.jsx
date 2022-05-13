@@ -1,10 +1,14 @@
 import logo from "../../assets/logo.svg";
 import logoWhite from "../../assets/logo-white.svg";
 import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../../context/auth/AuthContext";
+import { useContext } from "react";
+import UserCard from "../usercard/UserCard";
 
 const Header = () => {
   const location = useLocation();
   const pathActual = location.pathname;
+  const { usuario } = useContext(AuthContext);
 
   return (
     <div
@@ -22,12 +26,18 @@ const Header = () => {
         >
           Inicio
         </Link>
-        <Link to="/login" className="relative text-white link-after">
-          Acceder
-        </Link>
-        <Link to="/registro" className="relative text-white link-after">
-          Registro
-        </Link>
+        {usuario ? (
+          <UserCard usuario={usuario} />
+        ) : (
+          <>
+            <Link to="/login" className="relative text-white link-after">
+              Acceder
+            </Link>
+            <Link to="/registro" className="relative text-white link-after">
+              Registro
+            </Link>
+          </>
+        )}
       </nav>
     </div>
   );

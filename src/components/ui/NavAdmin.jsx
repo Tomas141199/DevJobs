@@ -12,7 +12,7 @@ const NavAdmin = () => {
           pathActual === "/admin/" ? "bg-gray-600" : ""
         }`}
       >
-        Ver vacantes
+        Panel
       </Link>
       <Link
         to="/admin/crear-publicacion"
@@ -20,7 +20,7 @@ const NavAdmin = () => {
           pathActual === "/admin/crear-publicacion" ? "bg-gray-600" : ""
         }`}
       >
-        Ver vacantes
+        Publicar
       </Link>
     </nav>
   );

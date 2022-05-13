@@ -6,10 +6,40 @@ import wavyRed from "../../assets/bg-pattern-wave-red.svg";
 import Slide from "react-reveal/Slide";
 import Pulse from "react-reveal/Pulse";
 import { registroValues, registroSchema } from "../../validation/registro";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import fireService from "../../firebase/firebaseservice";
+import { useNavigate } from "react-router-dom";
+import NotifyContext from "../../context/notify/notifyContext";
+import { useContext } from "react";
+import { errorNotify } from "./../../helpers/notify";
+import { ToastContainer } from "react-toastify";
 
 const Registro = () => {
+  const navigate = useNavigate();
+  const { mostrarNotificacion } = useContext(NotifyContext);
+
+  //Funcion para registrar un nuevo usuario
+  const registerNewUser = async (values) => {
+    const { nombre, email, password } = values;
+    try {
+      //Registro del nuevo usuario
+      await createUserWithEmailAndPassword(fireService.auth, email, password);
+      //Actualiza el nombre del usuario
+      await updateProfile(fireService.auth.currentUser, {
+        displayName: `${nombre}`,
+      });
+      mostrarNotificacion("Registro exitoso!, ya puede comenzar a publicar");
+      navigate("/");
+      //Fin de la operacion
+    } catch (error) {
+      errorNotify(error.code);
+    }
+  };
+
   return (
     <div className="h-screen flex justify-center items-center">
+      {/* Alertas por notificacion */}
+      <ToastContainer />
       <div className="flex flex-col-reverse md:flex-row gap-6 w-140">
         <div className="relative flex-1 bg-bg-primary-blue py-2 px-10 rounded-sm">
           <Pulse>
@@ -22,6 +52,7 @@ const Registro = () => {
           <Formik
             initialValues={registroValues}
             validationSchema={registroSchema}
+            onSubmit={(values) => registerNewUser(values)}
           >
             <Form className="mt-8 w-full sm:w-11/12 mx-auto">
               <Field name="nombre" type="text" placeholder="Tu nombre" />

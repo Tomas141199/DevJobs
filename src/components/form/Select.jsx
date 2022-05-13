@@ -16,9 +16,13 @@ const Select = (props) => {
           Selecione una opcion
         </option>
 
-        {props.values.map((value) => (
-          <option value={value}>{value}</option>
-        ))}
+        {props.values.map((value) => {
+          return (
+            <option key={Math.random()} value={value.nombre}>
+              {value.nombre}
+            </option>
+          );
+        })}
       </select>
 
       {/* Errores de validacion */}

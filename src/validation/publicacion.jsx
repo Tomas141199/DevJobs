@@ -2,6 +2,7 @@ import * as Yup from "yup";
 export const publicacionSchema = () => {
   return Yup.object({
     titulo: Yup.string().required("El nombre es obligatorio"),
+    empresa: Yup.string().required("La empresa es obligatorio"),
     categoria: Yup.string().required("La categoria es obligatoria"),
     experiencia: Yup.string().required("La experiencia es obligatoria"),
     salario: Yup.string().required("El salario es obligatorio"),
@@ -13,6 +14,7 @@ export const publicacionSchema = () => {
 
 const publicacionValues = {
   titulo: "",
+  empresa: "",
   categoria: "",
   experiencia: "",
   salario: "",

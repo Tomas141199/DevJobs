@@ -10,12 +10,13 @@ import "swiper/css";
 import image1 from "../../assets/image-slide-1.jpg";
 import image2 from "../../assets/image-slide-2.jpg";
 import image3 from "../../assets/image-slide-3.jpg";
-const SlideShow = () => {
+import { Link } from "react-router-dom";
+const SlideShow = ({ vacantes }) => {
   return (
     <Swiper
       style={{
-        "--swiper-navigation-color": "#fff",
-        "--swiper-pagination-color": "#fff",
+        "--swiper-navigation-color": "#ff0000",
+        "--swiper-pagination-color": "#000000",
       }}
       pagination={{
         clickable: true,
@@ -27,33 +28,19 @@ const SlideShow = () => {
       spaceBetween={30}
       loop={true}
     >
-      <SwiperSlide>
-        <img src={image1} />
-        <div className="absolute font-semibold text-white text-xl right-8 bottom-3 md:bottom-12">
-          Devops Developer
-          <span className="block text-sm text-right font-normal">
-            Microsoft
-          </span>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={image2} />
-        <div className="absolute font-semibold text-white text-xl right-8 bottom-3 md:bottom-12">
-          Devops Developer
-          <span className="block text-sm text-right font-normal">
-            Microsoft
-          </span>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <img src={image3} />
-        <div className="absolute font-semibold text-white text-xl right-8 bottom-3 md:bottom-12">
-          Devops Developer
-          <span className="block text-sm text-right font-normal">
-            Microsoft
-          </span>
-        </div>
-      </SwiperSlide>
+      {vacantes.map((vacante) => (
+        <SwiperSlide key={vacante.id}>
+          <img src={vacante.urlImagen} />
+          <Link to={`/vacante/${vacante.id}`}>
+            <div className="absolute font-semibold text-white text-xl  left-1/2 -translate-x-1/2  bottom-3 md:bottom-12">
+              {vacante.titulo}
+              <span className="block text-sm text-right font-normal">
+                {vacante.empresa}
+              </span>
+            </div>
+          </Link>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

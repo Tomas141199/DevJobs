@@ -5,22 +5,22 @@ const CategoriasSection = () => {
     <div className="flex md:justify-between flex-col-reverse md:flex-row h-96 md:h-64">
       <div className="flex-1 md:flex-initial w-full md:w-3/6 grid-categorias px-4 md:px-8 mt-4">
         <Link
-          to="/vacantes?categoria=full-stack"
+          to="/vacantes?categoria=Full-Stack"
           className="categoria-1 bg-categoria-1"
         >
           Full-Stack
         </Link>
         <Link
-          to="/vacantes?categoria=full-stack"
+          to="/vacantes?categoria=UI/UX"
           className="categoria-2 bg-categoria-2"
         >
           UI/UX
         </Link>
         <Link
           className="categoria-3 bg-categoria-3"
-          to="/vacantes?categoria=full-stack"
+          to="/vacantes?categoria=Mobile"
         >
-          Movil
+          Mobile
         </Link>
       </div>
       <div className="relative font-heading bg-bg-primary-blue flex-1 flex items-center justify-center">
