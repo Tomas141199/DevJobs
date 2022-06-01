@@ -1,13 +1,12 @@
 import { useField } from "formik";
 import ErrorMessage from "./ErrorMessage";
 
-const Select = (props) => {
+const SelectCode = (props) => {
   const [field, meta] = useField(props);
   return (
-    <div className="floating-input mb-8 relative h-10">
-      <label className="text-xs">{props.label}</label>
+    <div className="floating-input mb-4 relative h-10">
       <select
-        className="border-b-4 border-primary-jade w-full  p-1 px-2 outline-none rounded-sm"
+        className="border-b-4 border-primary-red w-full  p-1 px-2 outline-none rounded-sm"
         placeholder="placeholder"
         {...field}
         {...props}
@@ -18,12 +17,9 @@ const Select = (props) => {
 
         {props.values.map((value) => {
           return (
-            <option
-              style={{ background: `url(${value.flag})` }}
-              key={Math.random()}
-              value={value.nombre}
-            >
-              {value.nombre}
+            <option key={Math.random()} value={value.dialCode.replace("+", "")}>
+              <img src={value.flag} alt={value.name} className="w-4 h-4" />
+              {`${value.name} (${value.dialCode})`}
             </option>
           );
         })}
@@ -37,4 +33,4 @@ const Select = (props) => {
   );
 };
 
-export default Select;
+export default SelectCode;

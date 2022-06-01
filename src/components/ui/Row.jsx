@@ -19,7 +19,7 @@ const Row = ({ vacante }) => {
 
   const mostrarAlerta = () => {
     confirmAlert({
-      title: "Eliminar Noticia",
+      title: "Eliminar Vacante",
       message: "¿Esta seguro de hacer esto?",
       buttons: [
         {

@@ -9,6 +9,7 @@ export const solicitudSchema = () => {
       .required("El Numero de contacto es obligatorio")
       .min(10, "El numero debe ser de 10 digitos")
       .max(10, "El numero no debe ser de mas 10 digitos"),
+    code: Yup.string().required("El codigo del pais es obligatorio"),
   });
 };
 
@@ -16,6 +17,7 @@ const solicitudValues = {
   nombre: "",
   email: "",
   tel: "",
+  code: "",
 };
 
 export { solicitudValues };

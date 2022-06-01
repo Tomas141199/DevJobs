@@ -22,6 +22,14 @@ const NavAdmin = () => {
       >
         Publicar
       </Link>
+      <Link
+        to="/vacantes"
+        className={`duration-300 hover:bg-primary-jade px-3 py-2  ${
+          pathActual === "/vacantes" ? "bg-gray-600" : ""
+        }`}
+      >
+        Ver vacantes
+      </Link>
     </nav>
   );
 };

@@ -16,6 +16,8 @@ import { errorNotify } from "./../../helpers/notify";
 import { ToastContainer } from "react-toastify";
 import NotifyContext from "./../../context/notify/notifyContext";
 import { useNavigate } from "react-router-dom";
+import SelectCode from "../../components/form/SelectCode";
+import { countryCodes } from "./../../helpers/getCountryCodes";
 
 const VistaVacante = () => {
   const { id } = useParams();
@@ -24,6 +26,8 @@ const VistaVacante = () => {
   const [urlFile, setUrlFile] = useState("");
   const { mostrarNotificacion } = useContext(NotifyContext);
   const navigate = useNavigate();
+  const codes = countryCodes;
+  console.log(codes);
 
   useEffect(() => {
     setLoading(true);
@@ -58,7 +62,7 @@ const VistaVacante = () => {
     const candidato = {
       nombre: values.nombre,
       correo: values.email,
-      telefono: values.tel,
+      telefono: `${values.code + values.tel}`,
       urlCV: urlFile,
       vacanteId: id,
       createdAt: Date.now(),
@@ -156,16 +160,37 @@ const VistaVacante = () => {
                     onSubmit={procesarSolicitud}
                   >
                     <Form className="mt-8 w-full sm:w-11/12 mx-auto">
+                      <label
+                        htmlFor=""
+                        className="text-white font-bold text-xl mb-2 block"
+                      >
+                        Informacion personal
+                      </label>
                       <Field
                         name="nombre"
                         type="text"
                         placeholder="Tu nombre"
                       />
+
                       <Field
                         name="email"
                         type="email"
                         placeholder="Tu Correo"
                       />
+
+                      <label
+                        htmlFor=""
+                        className="text-white font-bold text-xl mb-2 block"
+                      >
+                        Numero de contacto
+                      </label>
+
+                      <SelectCode
+                        values={codes}
+                        name="code"
+                        label="Codigo del pais"
+                      />
+
                       <Field
                         name="tel"
                         type="tel"

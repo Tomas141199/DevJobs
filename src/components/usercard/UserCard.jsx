@@ -2,6 +2,7 @@ import useClickOutside from "./../../hooks/useClickOutside";
 import arrow from "../../assets/down-filled-triangular-arrow.png";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
+import userPic from "../../assets/user-pic.png";
 
 const UserCard = ({ usuario }) => {
   const { activeClass, wrapperRef, toggleClass } = useClickOutside();
@@ -22,10 +23,7 @@ const UserCard = ({ usuario }) => {
       className=" relative flex cursor-pointer items-center gap-1"
     >
       <img
-        src={
-          usuario.photoURL ??
-          "http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png"
-        }
+        src={usuario.photoURL ?? userPic}
         className="rounded-full w-6"
         alt="user pic"
       />

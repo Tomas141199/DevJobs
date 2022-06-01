@@ -86,6 +86,18 @@ class FirebaseService {
     const db = getFirestore();
     await deleteDoc(doc(db, "Vacantes", id));
   }
+  async delSolicitud(id, vacanteId) {
+    console.log("Eliminando", id);
+    const db = getFirestore();
+    await deleteDoc(doc(db, "Candidatos", id));
+    const docRef = doc(db, "Vacantes", vacanteId);
+    const docSnap = await getDoc(docRef);
+    await setDoc(
+      doc(db, "Vacantes", vacanteId),
+      { candidatos: docSnap.data().candidatos - 1 },
+      { merge: true }
+    );
+  }
 
   async getVacantesByUserId(id) {
     const db = getFirestore();
